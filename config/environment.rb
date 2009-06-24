@@ -43,6 +43,17 @@ Rails::Initializer.run do |config|
     :lib => 'will_paginate',
     :version => '= 2.3.8',
     :source => 'http://gems.github.com'
+
+  # Tests a HashRocket issue where dependencies were conditionally loaded based
+  # on the value of RAILS_ENV.  We should always run in the 'test' environment.
+  #
+  # Project ID: 63690
+  # User:       HashRocket
+  # Ticket#:    958
+  unless RAILS_ENV == "test"
+    raise "RAILS_ENV != 'test'"
+  end
+
 #  config.gem 'curb', :version => "= 0.3.4"
 
   # ia ia cthulu ftaghn  
