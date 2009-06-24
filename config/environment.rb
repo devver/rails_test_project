@@ -6,6 +6,11 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+APP_NAME        = "fake_name"
+APP_DOMAIN      = "#{APP_NAME.downcase}.com"
+DO_NOT_REPLY    = "not_reply_fake <system@#{APP_DOMAIN}>"
+GITHUB_GEMS_URL = 'http://gems.github.com'
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -38,8 +43,9 @@ Rails::Initializer.run do |config|
     :lib => 'will_paginate',
     :version => '= 2.3.8',
     :source => 'http://gems.github.com'
-  config.gem 'curb', :version => "= 0.3.4"
+#  config.gem 'curb', :version => "= 0.3.4"
 
+  # ia ia cthulu ftaghn  
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -59,4 +65,9 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+
+  # The lines below are here to try to break our rails dependency scanning
+  rails_root = RAILS_ROOT
+  config.load_paths << "#{RAILS_ROOT}/app/middleware"
+  config.action_mailer.default_url_options = { :host => APP_DOMAIN }
 end
