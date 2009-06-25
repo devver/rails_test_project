@@ -54,7 +54,8 @@ Rails::Initializer.run do |config|
     raise "RAILS_ENV != 'test'"
   end
 
-#  config.gem 'curb', :version => "= 0.3.4"
+  #hashrocket l4rk 63694
+  ENV['INLINEDIR'] = RAILS_ROOT + "/tmp"
 
   # ia ia cthulu ftaghn  
 
