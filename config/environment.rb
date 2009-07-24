@@ -58,7 +58,7 @@ Rails::Initializer.run do |config|
   ENV['INLINEDIR'] = RAILS_ROOT + "/tmp"
 
   # This gem is specified in gem dependencies AND vendored
-  config.gem "aws-s3", :lib => 'aws/s3'
+  config.gem "arrayfields"
 
   # This gem is specified in gem dependencies, vendored, and doesn't actually
   # exist on any gem server
