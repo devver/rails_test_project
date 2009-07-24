@@ -57,7 +57,14 @@ Rails::Initializer.run do |config|
   #hashrocket l4rk 63694
   ENV['INLINEDIR'] = RAILS_ROOT + "/tmp"
 
-  # ia ia cthulu ftaghn  
+  # This gem is specified in gem dependencies AND vendored
+  config.gem "aws-s3", :lib => 'aws/s3'
+
+  # This gem is specified in gem dependencies, vendored, and doesn't actually
+  # exist on any gem server
+  #
+  # Ticket #1105
+  config.gem "ia-ia-cthulhu-ftaghn"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
