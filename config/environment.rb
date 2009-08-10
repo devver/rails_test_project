@@ -54,16 +54,26 @@ Rails::Initializer.run do |config|
     raise "RAILS_ENV != 'test'"
   end
 
+  #eugene had the Rails.root problem blow up on him
+  #ticket: #1134
+  ENV['FAKE_ROOT'] = Rails.root
+
+  #Mike found this caused an error
+  #ticket: #1167
+  Rails::VendorGemSourceIndex.silence_spec_warnings = true
+
   #hashrocket l4rk 63694
   ENV['INLINEDIR'] = RAILS_ROOT + "/tmp"
 
-  #eugene had the Rails.root problem blow up on him
-  ENV['FAKE_ROOT'] = Rails.root
-
-  #Mike found
-  Rails::VendorGemSourceIndex.silence_spec_warnings = true
-
   # ia ia cthulu ftaghn  
+  # This gem is specified in gem dependencies AND vendored
+  config.gem "arrayfields"
+
+  # This gem is specified in gem dependencies, vendored, and doesn't actually
+  # exist on any gem server
+  #
+  # Ticket #1105
+  config.gem "ia-ia-cthulhu-ftaghn"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
