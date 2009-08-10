@@ -57,6 +57,12 @@ Rails::Initializer.run do |config|
   #hashrocket l4rk 63694
   ENV['INLINEDIR'] = RAILS_ROOT + "/tmp"
 
+  #eugene had the Rails.root problem blow up on him
+  ENV['FAKE_ROOT'] = Rails.root
+
+  #Mike found
+  Rails::VendorGemSourceIndex.silence_spec_warnings = true
+
   # ia ia cthulu ftaghn  
 
   # Only load the plugins named here, in the order given (default is alphabetical).
