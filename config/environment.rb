@@ -50,9 +50,9 @@ Rails::Initializer.run do |config|
   # Project ID: 63690
   # User:       HashRocket
   # Ticket#:    958
-  unless RAILS_ENV == "test"
-    raise "RAILS_ENV != 'test'"
-  end
+  #unless RAILS_ENV == "test"
+  #  raise "RAILS_ENV != 'test'"
+  #end
 
   #eugene had the Rails.root problem blow up on him
   #ticket: #1134

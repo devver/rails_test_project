@@ -13,6 +13,13 @@
 # The following command will initialize the test database in a typical Ruby on
 # Rails project.  It creates the database tables according to the values in
 # schema.rb, which is created when rake db:migrate is run.
+
+#echo "before"
+#echo $RAILS_ENV
+#echo "after"
+#echo "failure"
+#exit 1
+
 rake RAILS_ENV=test db:schema:load
 
 # For some Rails projects, it may be desirable to migrate from zero instead of
